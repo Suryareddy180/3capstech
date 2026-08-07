@@ -1,0 +1,23 @@
+# Node
+node_modules/
+**/node_modules/
+
+# Environment
+.env
+**/.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Cache
+.cache/
+.ruff_cache/
+
+# Build
+dist/
+build/
+
+# Logs
+*.log
