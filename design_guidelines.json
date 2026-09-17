@@ -1,0 +1,182 @@
+{
+  "theme": "hybrid",
+  "project_type": "Marketing + Learning Platform (LMS) Hybrid",
+  "emotional_tone": "Luxury, Premium, Minimal, Elegant, Future-Ready, Technology Driven",
+  "typography": {
+    "heading_font": "Cabinet Grotesk",
+    "body_font": "Satoshi",
+    "mono_font": "JetBrains Mono",
+    "pairing_strategy": "The 'Editorial Future' mixed with 'Swiss Brutalist' precision. 'Cabinet Grotesk' provides a bold, wide, premium feel for headings. 'Satoshi' offers flawless geometric clarity for long-form reading. 'JetBrains Mono' is used exclusively for badges, labels, and tech specs.",
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl+ font-black tracking-tighter leading-none",
+      "h2": "text-4xl sm:text-5xl font-bold tracking-tight",
+      "h3": "text-2xl sm:text-3xl font-semibold tracking-tight",
+      "h4": "text-lg sm:text-xl font-medium",
+      "body": "text-base leading-relaxed",
+      "label": "text-xs font-mono uppercase tracking-[0.2em]"
+    }
+  },
+  "colors": {
+    "light": {
+      "background": "#FCFCFC",
+      "surface": "#FFFFFF",
+      "surface_glass": "rgba(255, 255, 255, 0.7)",
+      "primary": "#1E293B",
+      "primary_hover": "#334155",
+      "accent": "#11A831",
+      "secondary_accent": "#0549B1",
+      "accent_glow": "rgba(17, 168, 49, 0.20)",
+      "text_primary": "#1E293B",
+      "text_secondary": "#64748B",
+      "border": "rgba(30, 41, 59, 0.08)",
+      "gradient_primary": "linear-gradient(135deg, #334155, #1E293B)"
+    },
+    "dark": {
+      "background": "#050A14",
+      "surface": "#0A1122",
+      "surface_glass": "rgba(10, 17, 34, 0.6)",
+      "primary": "#FFFFFF",
+      "primary_hover": "#E5E7EB",
+      "accent": "#11A831",
+      "accent_glow": "rgba(17, 168, 49, 0.32)",
+      "text_primary": "#F8FAFC",
+      "text_secondary": "#94A3B8",
+      "border": "rgba(255, 255, 255, 0.1)",
+      "gradient_primary": "linear-gradient(135deg, #FFFFFF, #E2E8F0)"
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": {
+      "light": "backdrop-blur-xl bg-white/70 border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.04)]",
+      "dark": "backdrop-blur-xl bg-[#0A1122]/60 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)]"
+    },
+    "neumorphism": {
+      "rule": "Only use for interactive LMS widgets, never globally."
+    },
+    "shadows": {
+      "ambient": "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]",
+      "glow": "shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)]"
+    },
+    "borders": "1px delicate inner stroke mandatory for glass surfaces. Light: border-black/5, Dark: border-white/10"
+  },
+  "component_styling": {
+    "buttons": {
+      "primary": "Pill-shaped (rounded-full), solid contrast color, magnetic hover effect. Light mode: bg-black text-white hover:scale-105 transition-transform. Dark mode: bg-white text-black hover:scale-105.",
+      "secondary": "Glass-morphism pill with 1px border, backdrop blur, transparent background. Hover adds subtle glow.",
+      "magnetic": "Use Framer Motion to map mouse position to transform values for magnetic stickiness."
+    },
+    "cards_course": {
+      "layout": "Grid-based or flex column. Image top (max-h-48, object-cover).",
+      "style": "Glass card, subtle 1px border. Hover: slightly lifts (-translate-y-2), shadow increases, image slightly scales up (scale-105).",
+      "content": "Title (h4), Instructor (text-sm), Rating, Level Badge (mono font), Price, Hover Reveal 'Enroll' CTA."
+    },
+    "cards_service": {
+      "layout": "Interactive expanding panels (Accordion style or flex-grow on hover).",
+      "style": "Dark mode: #0A1122 background, glowing border tracing effect (Aceternity style)."
+    },
+    "badges": "rounded-full px-3 py-1 text-xs font-mono uppercase tracking-wider bg-accent/10 text-accent border border-accent/20",
+    "inputs": "Shadcn components heavily customized. bg-transparent border-b border-border/50 focus:border-accent focus:ring-0 rounded-none (for minimalist look) or highly rounded-xl with glass effect."
+  },
+  "layouts": {
+    "spacing_scale": "Generous Spacing Philosophy. Use 2-3x more padding than usual. Sections must have py-24 or py-32.",
+    "grid_system": "Bento Grid Protocol. Asymmetry over standard Bootstrap columns. Mix col-span-4, col-span-8 to create tension.",
+    "hero": "100vh height. Absolute positioned 3D canvas behind content. Content aligned center or left, massive typography (text-6xl+).",
+    "learning_hub": "Netflix/Coursera inspired. Horizontal scrollable carousels for 'Trending', 'Popular', 'Recently Added'. Dense high-fidelity grid for course lists.",
+    "lms_preview": "Render as a realistic dashboard inside a mock Macbook/browser window container. Dense grid layout, sharp edges, dark mode forced for this specific section."
+  },
+  "animations": {
+    "text_reveal": "Staggered word or character reveal using Framer Motion (opacity 0 to 1, y: 20 to 0) on scroll.",
+    "parallax": "Use React Spring Parallax or Framer Motion useScroll. Backgrounds move slower than foreground content.",
+    "3d_tilt": "Use react-parallax-tilt for course cards and service panels.",
+    "cursor": "Custom animated framer-motion cursor (blend-mode difference, expands on clickable elements).",
+    "page_transitions": "Animate presence opacity blur transitions.",
+    "background_particles": "Use TSParticles with a slow-moving network/orbit preset."
+  },
+  "accessibility": {
+    "contrast": "Ensure min 4.5:1 ratio. Text over images must have a gradient overlay or text-shadow.",
+    "focus": "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2",
+    "motion": "Respect prefers-reduced-motion: reduce."
+  },
+  "media": {
+    "images": {
+      "rule": "High contrast, dark/moody tech aesthetics. Images inside cards must be masked with rounded corners. Images must never exceed 80vh on mobile."
+    }
+  },
+  "3d_libraries": {
+    "recommended": [
+      {
+        "name": "react-tsparticles",
+        "purpose": "Digital network/particles in the hero section."
+      },
+      {
+        "name": "@react-three/fiber and @react-three/drei",
+        "purpose": "Interactive 3D globe and floating technology cards in Hero."
+      },
+      {
+        "name": "framer-motion",
+        "purpose": "Text reveals, sticky sections, magnetic buttons, custom cursor, smooth scrolling."
+      },
+      {
+        "name": "react-parallax-tilt",
+        "purpose": "3D tilt effect on glass cards and testimonials."
+      }
+    ]
+  },
+  "image_urls": {
+    "hero_backgrounds": [
+      {
+        "url": "https://images.unsplash.com/photo-1760978631959-87fa2724d6e9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHw0fHx0ZWNobm9sb2d5JTIwcGFydGljbGVzJTIwZGFyayUyMGFic3RyYWN0fGVufDB8fHx8MTc4NjEyMDQyOXww&ixlib=rb-4.1.0&q=85",
+        "description": "Wavy metallic grid on black background - use for abstract tech sections."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1770486036751-e55247238964?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwcGFydGljbGVzJTIwZGFyayUyMGFic3RyYWN0fGVufDB8fHx8MTc4NjEyMDQyOXww&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract pattern of small lights - use for dark mode learning hub background."
+      }
+    ],
+    "course_thumbnails": [
+      {
+        "url": "https://images.unsplash.com/photo-1520583457224-aee11bad5112?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXIlMjBkZXNrJTIwZGFya3xlbnwwfHx8fDE3ODYxMjA0Mjl8MA&ixlib=rb-4.1.0&q=85",
+        "description": "MacBook Pro open near black Canon mug - use for 'Advanced Web Dev' course."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1754548930550-be9fa88874f4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwzfHxkZXZlbG9wZXIlMjBkZXNrJTIwZGFya3xlbnwwfHx8fDE3ODYxMjA0Mjl8MA&ixlib=rb-4.1.0&q=85",
+        "description": "A coder's workspace, filled with code - use for 'AI & Python' course."
+      }
+    ],
+    "testimonials": [
+      {
+        "url": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMHNtaWxpbmd8ZW58MHx8fHwxNzg2MTIwNDMwfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Woman on focus photography - use for client/student testimonial."
+      },
+      {
+        "url": "https://images.pexels.com/photos/29086752/pexels-photo-29086752.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Stylish woman in a black striped blazer - use for enterprise client testimonial."
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Install required dependencies: framer-motion, lucide-react, next-themes (for dark mode toggle), react-tsparticles, react-parallax-tilt, clsx, tailwind-merge.",
+    "Configure Next Themes to wrap the application for seamless dark/light mode switching.",
+    "Implement the cursor using Framer Motion fixed to the viewport.",
+    "Build the Hero component with absolute positioned TSParticles or React Three Fiber background, massive typography.",
+    "Create the specific sections requested: About, Services, Learning (Horizontal scrollable courses), LMS Preview (A mock dark dashboard ui), Internships, Technology Orbit (circular spinning tech logos), Why Choose Us, Testimonials, Contact.",
+    "DO NOT use generic centered layout. Use the grid system defined above.",
+    "Apply `data-testid` to all interactive elements for robust automated testing."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "You tend to converge toward generic outputs. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "You MUST NOT apply universal transition. Eg: transition: all. Always add transitions for specific interactive elements like button, input excluding transforms.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file.",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style.",
+    "NEVER use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories = main agent will use placeholder text which is FORBIDDEN.",
+    "All interactive and key informational elements MUST include a `data-testid` attribute."
+  ]
+}

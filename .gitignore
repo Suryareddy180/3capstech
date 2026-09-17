@@ -1,0 +1,26 @@
+# Node
+node_modules/
+**/node_modules/
+
+# Environment
+.env
+**/.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.sqlite3
+db.sqlite3
+
+
+# Cache
+.cache/
+.ruff_cache/
+
+# Build
+dist/
+build/
+
+# Logs
+*.log

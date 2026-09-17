@@ -1,0 +1,54 @@
+{
+  "summary": "Full e2e testing of 3CAPSTECH site. Backend: 15 pytest cases across /api/, /api/stats, /api/contact, /api/newsletter, /api/enroll incl. validation (422) and Mongo persistence -> 15/15 passed. Frontend: verified hero headline visibility (BUILD./LEARN./INNOVATE. all rendered, opacity 1, non-zero height), 3 hero CTAs, theme toggle (dark class + body bg + localStorage '3cap-theme') with persistence across reload, nav to /learning, Learning Hub search filter (9->1 + empty state), all 6 category chips, enroll button -> 'Enrolled ✓' (POST /api/enroll 200), trending/popular carousels, LMS preview (progress bars + leaderboard), contact form success (POST /api/contact 200 -> contact-success), newsletter success (POST /api/newsletter 200 -> newsletter-msg), scroll-reveal on all 29 headings, WhyChooseUs counters animating to final values (240+/18,500+/65/23), testimonial carousel next, internship-apply, home-explore-learning, and responsive at 375/768/1440 on both routes with no horizontal scroll. Zero console/page errors throughout.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Mobile nav panel (375px)",
+        "issues": [
+          "Inside nav-mobile-panel the brand tagline 'SOFTWARE · PVT · LTD' wraps to two lines and visually collides with the nav-mobile-close button (see /app/.screenshots/mob_nav_settled.png). Consider hiding the tagline or reducing tracking inside the mobile panel."
+        ]
+      },
+      {
+        "screen": "Learning Hub course card",
+        "issues": [
+          "course-preview-<id> (play overlay) button is clickable but produces no visible effect (no modal/preview). Either wire it up or remove to avoid a dead interaction."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Optional polish: fix brand tagline wrap/overlap inside mobile nav panel at 375px",
+    "Optional: make course-preview button do something (modal/video) or remove it",
+    "Testability nit: data-testid=\"brand-logo\" is rendered twice (navbar + mobile panel) causing Playwright strict-mode violations when the panel is open; use a distinct id for the panel logo"
+  ],
+  "critical_code_review_comments": [
+    "server.py: app.add_middleware(CORSMiddleware, ...) is called AFTER app.include_router(); it currently works because Starlette builds the middleware stack lazily, but move add_middleware above include_router to avoid future breakage.",
+    "server.py: /api/newsletter and /api/enroll have no per-email dedupe index; consider a unique index on newsletter.email and a compound index on enrollments(course_id,email) to prevent duplicate rows.",
+    "server.py: no explicit error handling around Mongo writes — a DB outage will surface as an unhandled 500 with a stack trace; wrap inserts and return 503 with a clean message.",
+    "frontend/src/lib/api.js: no timeout/abort on fetch; a hung backend leaves the contact form stuck in 'Sending...' indefinitely.",
+    "Contact.jsx: on failure the message body is preserved but the generic error text does not distinguish 422 validation from network errors; surface the backend detail when available."
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py"
+  ],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "100%"
+  },
+  "seed_data_creation": "Created and purged TEST_-prefixed docs in contacts/newsletter/enrollments collections. One contact + one enrollment doc remain from UI submissions using non-TEST emails (harmless demo data).",
+  "should_call_test_agent_after_fix": false,
+  "should_main_agent_self_test": true,
+  "test_credentials": "N/A - app has no auth. Note: /app/memory/test_credentials.md does not exist (not needed here).",
+  "context_for_next_testing_agent": "Backend regression suite lives at /app/backend/tests/backend_test.py (run: cd /app/backend && python -m pytest tests/ -v). All 15 pass. Frontend fully verified via preview URL for both / and /learning, all data-testids resolve. Note: the Learning Hub heading is split across WordReveal spans, so get_by_text(\"Master tomorrow's technology, today.\") will NOT match — match partial text like \"Master tomorrow's\" instead. Collapsed Services desktop panels and the lg:hidden mobile service cards report 0-height h3 elements; this is expected (vertical rotated titles / display:none), not a bug. Decorative .blob divs and overflow-x carousels exceed viewport right edge by design but documentElement.scrollWidth == clientWidth at 375/768/1440 so no page-level horizontal scroll.",
+  "rca_of_the_issue": "No functional defects found. The previously reported invisible-WordReveal-heading issue is confirmed fixed: all 29 h1/h2/h3 on Home render with opacity 1 and non-zero height after scrolling, and the gradient sub-headings (e.g. 'technology, today.', 'LEARN.') render with visible gradient text."
+}
